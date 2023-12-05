@@ -21,6 +21,7 @@
 #include "cartographer_ros/ros_log_sink.h"
 #include "gflags/gflags.h"
 #include "tf2_ros/transform_listener.h"
+#include "cartographer/mapping/2d/match_submap.h"
 
 DEFINE_bool(collect_metrics, false,
             "Activates the collection of runtime metrics. If activated, the "
@@ -95,6 +96,8 @@ int main(int argc, char** argv) {
   ::ros::start();
 
   cartographer_ros::ScopedRosLogSink ros_log_sink;
+  MatchSubmap matchSubmap;
+
   cartographer_ros::Run();
   ::ros::shutdown();
 }
